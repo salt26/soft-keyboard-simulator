@@ -2,30 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Key : MonoBehaviour
 {
 
     public Text wpmText;
     public Text questText;
+    public GameObject loadingPanel;
     public List<GameObject> keys = new List<GameObject>();
-    public List<string> missions = new List<string>();
     Text myText;
     bool startTyping = false;
     bool endTyping = false;
     float timing = 0f;
-    int missionNum = 0;
+    Mission m;
 
     // Start is called before the first frame update
     void Start()
     {
+        m = Mission.mission;
         myText = GetComponent<Text>();
         myText.text = "|";
-
         wpmText.text = "0 wpm, 0 seconds";
 
-        if (missions.Count == 0) questText.text = "Type any sentences.";
-        questText.text = "Type \"" + missions[missionNum] + "\" as fast as possible.";
+        if (m.MissionCount == 0) questText.text = "Type any sentences.";
+        questText.text = "Type \"" + m.CurrentMission + "\" as fast as possible.";
+        loadingPanel.SetActive(false);
     }
 
     void Update()
@@ -38,7 +40,7 @@ public class Key : MonoBehaviour
                 wpmText.text = ((int)((myText.text.Length - 1) / timingDiff * 12f * 1000f) / 1000f)
                     + " wpm, " + ((int)(timingDiff * 1000f) / 1000f) + " seconds";
 
-            if (missions[missionNum].Contains(myText.text.Substring(0, myText.text.Length - 1))) {
+            if (m.CurrentMission.Contains(myText.text.Substring(0, myText.text.Length - 1))) {
                 myText.color = new Color(0f, 0f, 0f);
             }
             else
@@ -47,14 +49,13 @@ public class Key : MonoBehaviour
             }
         }
 
-        if (missions.Count == 0) return;
+        if (m.MissionCount == 0) return;
 
-        if (!endTyping && myText.text.Equals(missions[missionNum] + "|"))
+        if (!endTyping && myText.text.Equals(m.CurrentMission + "|"))
         {
             endTyping = true;
-            missionNum++;
-            if (missions.Count <= missionNum) missionNum = 0;
-            questText.text = "Type \"" + missions[missionNum] + "\" as fast as possible.";
+            m.IncreaseMissionNum();
+            questText.text = "Type \"" + m.CurrentMission + "\" as fast as possible.";
             foreach (GameObject g in keys)
             {
                 g.GetComponent<Button>().interactable = false;
@@ -105,5 +106,19 @@ public class Key : MonoBehaviour
         {
             g.GetComponent<Button>().interactable = true;
         }
+    }
+
+    public void UseOptiKeyboard()
+    {
+        loadingPanel.SetActive(true);
+        SceneManager.LoadScene(0);
+        Screen.SetResolution(540, 960, false);
+    }
+    
+    public void UseQwertyKeyboard()
+    {
+        loadingPanel.SetActive(true);
+        SceneManager.LoadScene(1);
+        Screen.SetResolution(770, 960, false);
     }
 }
