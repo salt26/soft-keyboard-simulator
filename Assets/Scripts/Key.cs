@@ -9,7 +9,6 @@ public class Key : MonoBehaviour
 
     public Text wpmText;
     public Text questText;
-    public GameObject loadingPanel;
     public List<GameObject> keys = new List<GameObject>();
     Text myText;
     bool startTyping = false;
@@ -27,7 +26,6 @@ public class Key : MonoBehaviour
 
         if (m.MissionCount == 0) questText.text = "Type any sentences.";
         questText.text = "Type \"" + m.CurrentMission + "\" as fast as possible.";
-        loadingPanel.SetActive(false);
     }
 
     void Update()
@@ -110,15 +108,19 @@ public class Key : MonoBehaviour
 
     public void UseOptiKeyboard()
     {
-        loadingPanel.SetActive(true);
         SceneManager.LoadScene(0);
         Screen.SetResolution(540, 960, false);
     }
     
     public void UseQwertyKeyboard()
     {
-        loadingPanel.SetActive(true);
         SceneManager.LoadScene(1);
         Screen.SetResolution(770, 960, false);
+    }
+
+    public void UseDvorakKeyboard()
+    {
+        SceneManager.LoadScene(2);
+        Screen.SetResolution(810, 960, false);
     }
 }

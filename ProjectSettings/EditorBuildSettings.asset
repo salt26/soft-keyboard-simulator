@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Qwerty.unity
     guid: b8481a7a6ef933443971652ce4415ac2
+  - enabled: 1
+    path: Assets/Scenes/Dvorak.unity
+    guid: f656bdea3457d9a48a33763a5196ecb5
   m_configObjects: {}

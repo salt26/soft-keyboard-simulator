@@ -42,7 +42,7 @@ public class Mission : MonoBehaviour
         try
         {
             string line;
-            StreamReader file = new StreamReader(@"Mission.txt");
+            StreamReader file = new StreamReader(@"MISSION.TXT");
             while((line = file.ReadLine()) != null)
             {
                 missions.Add(line.TrimEnd('\n'));
@@ -63,6 +63,7 @@ public class Mission : MonoBehaviour
         {
             string tmp;
             bool b = true;
+            if (s == null || s.Length == 0) continue;
             tmp = s.ToUpperInvariant();
             foreach (char c in tmp.ToCharArray())
             {
@@ -92,6 +93,8 @@ public class Mission : MonoBehaviour
     void AddBasicStrings(List<string> list)
     {
         list.Add("THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG");
+        list.Add("YOU CAN EDIT THIS TEXT BY MAKING MISSION DOT TXT FILE");
+        list.Add("THIS TEXT SHOULD CONTAIN ONLY LETTERS AND SPACES");
         list.Add("SUCH CIRCUMSTANCES ARE RANDOM VARIABLES");
         list.Add("THEY DECIDE TO CONDUCT A SMALL EXPERIMENT TO FIND OUT");
         list.Add("A GOOD EXAMPLE IS THE ACCELEROMETER");
