@@ -1,12 +1,15 @@
 ﻿# Soft Keyboard Simulator
+* [Download (Windows)](https://github.com/salt26/soft-keyboard-simulator/archive/builds.zip)
 * This program supports following keyboards.
   * Opti
   * Qwerty
   * Dvorak
 * Type some texts using keyboards above and measure your typing speed! (words per minute)
-* You can change the text to type by making "MISSION.TXT" and edit the file.
+* Once you have typed a given text, you can press "Delete All" or "Change Keyboard" to continue typing the next text.
+* You can change given texts by editing "MISSION.TXT".
   * The text should contain only english letters or spaces.
   * Otherwise, the line is ignored by Soft Keyboard Simulator.
+  * If "MISSION.TXT" are not found, default texts will be appear.
 
 
 ## References
