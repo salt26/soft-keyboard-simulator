@@ -35,8 +35,8 @@ public class Key : MonoBehaviour
         {
             float timingDiff = Time.time - timing;
             if (timingDiff > 0)
-                wpmText.text = ((int)((myText.text.Length - 1) / timingDiff * 12f * 1000f) / 1000f)
-                    + " wpm, " + ((int)(timingDiff * 1000f) / 1000f) + " seconds";
+                wpmText.text = FloatToString((myText.text.Length - 1) / timingDiff * 12f, 2)
+                    + " wpm, " + FloatToString(timingDiff, 2) + " seconds";
 
             if (m.CurrentMission.Contains(myText.text.Substring(0, myText.text.Length - 1))) {
                 myText.color = new Color(0f, 0f, 0f);
@@ -122,5 +122,18 @@ public class Key : MonoBehaviour
     {
         SceneManager.LoadScene(2);
         Screen.SetResolution(810, 960, false);
+    }
+
+    private string FloatToString(float f, int precision)
+    {
+        if (precision < 0) return "";
+        string s = ((int)f).ToString();
+        if (precision > 0) s += ".";
+        for (int i = 1; i <= precision; i++)
+        {
+            int n = (int)(f * Mathf.Pow(10, i)) % 10;
+            s += n.ToString();
+        }
+        return s;
     }
 }
