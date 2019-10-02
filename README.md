@@ -1,5 +1,5 @@
 ﻿# Soft Keyboard Simulator
-* [Download (Windows)](https://github.com/salt26/soft-keyboard-simulator/archive/builds.zip)
+* [Download (Windows & Mac)](https://github.com/salt26/soft-keyboard-simulator/archive/builds.zip)
 * This program supports following keyboards.
   * Opti
   * Qwerty
