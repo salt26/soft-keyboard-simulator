@@ -1,6 +1,6 @@
 ﻿# Soft Keyboard Simulator
 * [Download (Windows & Mac)](https://github.com/salt26/soft-keyboard-simulator/archive/builds.zip)
-  * Now Mac bulid may operate properly. (Thanks for [shpark](https://github.com/kev-damian))
+  * Now Mac bulid may operate properly. (Thanks to [shpark](https://github.com/kev-damian))
 * This program supports following keyboards.
   * Opti
   * Qwerty
